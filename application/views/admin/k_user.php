@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Walid Academy</title>
+    <title>Datatable - srtdash</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url(); ?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
@@ -15,7 +15,14 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/slicknav.min.css">
     <!-- amchart css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-    <!-- others css -->
+	<!-- Start datatable css -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+    <!-- style css -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/typography.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/default-css.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/styles.css">
@@ -46,16 +53,16 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li class="active">
+                            <li>
                                 <a href="<?php echo base_url('admin/dashboard'); ?>"><i class="ti-dashboard"></i><span>dashboard</span></a>
                                 
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Bagian Pengelolaan
                                     </span></a>
                                 <ul class="collapse">
                                     <li><a href="<?php echo base_url('admin/formulir'); ?>">Kelola Formulir</a></li>
-                                    <li><a href="<?php echo base_url('admin/k_user'); ?>">Kelola User</a></li>
+                                    <li class="active"><a href="<?php echo base_url('admin/k_user'); ?>">Kelola User</a></li>
                                     <li><a href="<?php echo base_url('admin/k_admin'); ?>">Kelola Admin</a></li>
                                 </ul>
                             </li>
@@ -81,50 +88,69 @@
                             <span></span>
                         </div>
                     </div>
-                    <!-- profile info & task notification -->
                 </div>
-            </div>    
+            </div>
             <!-- header area end -->
             <!-- page title area start -->
             <div class="page-title-area">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-sm-8">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Dashboard</h4>
+                            <h4 class="page-title pull-left">Kelola User</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="<?php echo base_url('admin/dashboard'); ?>">>Home</a></li>
-                                <li><span>Dashboard</span></li>
+                                <li><span>Kelola User</span></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- page title area end -->
-            
-                    <!-- testimonial area start -->
+            <div class="main-content-inner">
+                <div class="row">
                     
-                    <!-- testimonial area end -->
-            
-        <!-- main content area end -->
-        <div class="main-content-inner">
-                <div class="row mt-5 mb-5">
-                <div class="col-lg-12 mt-5">
-                <div class="card">
+                    <!-- Dark table start -->
+                    
+                    <div class="col-lg-12 mt-5">
+                    <div class="card">
                             <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-center">
-									<h2>Dashboard</h2>
+									<h2>Kelola User</h2>
                                 </div>
-                                <div class="market-status-table mt-4">
-                                    <div class="table-responsive">
-										 Selamat datang di sistem informasi Penerimaan Peserta Didik Baru (PPDB) Online.
-                                    </div>
-                                </div>
+										 <table id="dataTable3" class="table table-hover" style="width:100%"><thead class="thead-dark">
+											<tr>
+												<th>No</th>
+												<th>Email</th>
+												<th>Tanggal Daftar</th>
+                                                <th>Opsi</th>
+												
+											</tr></thead><tbody>
+											
+												
+                                            <!--?php $no=1; foreach ($user as $au): ?>-->
+												<tr>
+													<td><!--?php echo $no++ ?>--></td>
+													<td><!--?php echo $au->email ?>--></td>
+													<td><!--?php echo $au->tgldaftar ?>--></td><form method="post">
+                                                    <input type="hidden" value="" name="iduser">
+                                                    <td><a href="#" 
+                                                    class="btn btn-danger" onclick="return confirm('Apakah Anda ingin manghapus Admin ini?');">Hapus</a>
+                                                        <!--<input type="submit" class="btn btn-danger btn-sm" name="hapus" value="Hapus"></td>-->
+                                                    </form>
+												</tr>		
+                                                <!--?php endforeach; ?>-->    
+                                                
+										</tbody>
+										</table>
+                                
                             </div>
                         </div>
                     </div>
+                    <!-- Dark table end -->
                 </div>
             </div>
         </div>
+        <!-- main content area end -->
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
@@ -135,7 +161,6 @@
     </div>
     <!-- page container area end -->
     
-    <!-- offset area end -->
     <!-- jquery latest version -->
     <script src="<?php echo base_url(); ?>assets/js/vendor/jquery-2.2.4.min.js"></script>
     <!-- bootstrap 4 js -->
@@ -146,27 +171,12 @@
     <script src="<?php echo base_url(); ?>assets/js/jquery.slimscroll.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/jquery.slicknav.min.js"></script>
 
-    <!-- start chart js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-    <!-- start highcharts js -->
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <!-- start amcharts -->
-    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-    <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
-    <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
-    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
-    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-    <!-- all line chart activation -->
-    <script src="<?php echo base_url(); ?>assets/js/line-chart.js"></script>
-    <!-- all pie chart -->
-    <script src="<?php echo base_url(); ?>assets/js/pie-chart.js"></script>
-    <!-- all bar chart -->
-    <script src="<?php echo base_url(); ?>assets/js/bar-chart.js"></script>
-    <!-- all map chart -->
-    <script src="<?php echo base_url(); ?>assets/js/maps.js"></script>
+    <!-- Start datatable js -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     <!-- others plugins -->
     <script src="<?php echo base_url(); ?>assets/js/plugins.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
